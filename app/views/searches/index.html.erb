@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Find Stuff!</h1>
+      <%= form_tag(searches_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+      <%= submit_tag "Search" %>
+      <% end %>
+      <div class="results">
+        <% if @users.present? %>
+          <%= render @users %>
+        <% else %>
+          <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
+        <% end %>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <style media="screen">
+
+    </style>
+    <div class="container">
+      <%if flash[:errors] %>
+      <%= flash[:errors] %>
+      <% end %>
+      <div class="register">
+        <form class="" action="/sessions/create" method="post">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <h3>Register</h3>
+          <p>
+            <label>First Name:</label>
+            <input type="text" name="user[first_name]" value="">
+          </p>
+          <p>
+            <label>Last Name:</label>
+            <input type="text" name="user[last_name]" value="">
+          </p>
+          <p>
+            <label>Email:</label>
+            <input type="text" name="user[email]" value="">
+          </p>
+          <p>
+            <label>Date of Birth:</label>
+            <input type="date" name="user[dob]" value="">
+          </p>
+          <p>
+            <label>Password:</label>
+            <input type="password" name="user[password]" value="">
+          </p>
+          <p>
+            <label>Password Confirmation:</label>
+            <input type="password" name="user[password_confirmation]" value="">
+          </p>
+          <input type="submit" name="name" value="Register!">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

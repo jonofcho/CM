@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form class="" action="/sessions/register" method="post">
+      <h5>Register</h5>
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="submit" name="name" value="Get Started!">
+    </form>
+    <br>
+    <br>
+    <br>
+    <form class="" action="/sessions/new" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <h5>Login:</h5>
+        <input type="text" placeholder="E-mail" name="email" value="">
+        <input type="password" placeholder="Password" name="password" value="">
+        <input type="submit" name="name" value="Login">
+      </form>
+  </body>
+</html>
