@@ -5,12 +5,13 @@
     <title></title>
   </head>
   <style media="screen">
+
   .container{
     padding: 40px;
   }
     .photo{
       width: 200px;
-      height: 200px;
+      height: 250px;
       border: 1px solid black;
       display: inline-block;
     }
@@ -20,7 +21,7 @@
       border: 1px solid black;
       display: inline-block;
       width: 600px;
-      height: 400px;
+      height: 250px;
     }
     .skill{
       margin-bottom: 100px;
@@ -36,7 +37,7 @@
       <li><a href="/users/show">Home</a></li>
       <li><a href="#">Messages</a></li>
       <li><a href="#">Networking</a></li>
-      <li><a href="sessions/destroy">Log Out</a></li>
+      <li><a href="/sessions">Log Out</a></li>
     </ul>
 
   </header>
@@ -48,7 +49,11 @@
         </div>
           <div class="mycard">
             <a href="/skills/index">Tell us about what you do!</a>
-            <% @skill.each do |s| %>
+            <p>
+              <%=@user.first_name%> <%=@user.last_name%>
+            </p>
+            <%= will_paginate @skills %>
+            <% @skills.each do |s| %>
           <div class="skill">
             <p>
               <h4><%=s.field%></h4>
@@ -61,6 +66,7 @@
             </p>
           </div>
           <%end%>
+
         </div>
       </div>
       <div class="sec2">

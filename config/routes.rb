@@ -5,18 +5,26 @@ Rails.application.routes.draw do
   resources:sessions
   resources:users
   resources:profiles
+  resources:projects
 
-  get '/users/sessions/destroy' => 'sessions#destroy'
+  get '/sessions' => 'sessions#destroy'
   get '/users/show' => 'users#show'
   get '/users/profiles/show' => 'profiles#show'
 
   get '/skills/index' => 'skills#index'
+
+  get '/calendars/show' => 'calendars#show'
+  get '/searches' => 'searches#index'
+  get '/communities/show' => 'communities#show'
+  get '/projects/show' => 'projects#show'
 
   post '/skills/create' => 'skills#create'
 
   post '/sessions/register' => 'sessions#register'
   post '/sessions/create' => 'sessions#create'
   post '/sessions/new' => 'sessions#new'
+
+  post '/join' => 'projects#join'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

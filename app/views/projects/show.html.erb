@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <div class="container">
+        <header>
+            Hi! <%=@user.first_name%>
+          <ul>
+            <li><a href="/users/show">Home</a></li>
+            <li><a href="#">Messages</a></li>
+            <li><a href="#">Networking</a></li>
+            <li><a href="/sessions">Log Out</a></li>
+          </ul>
+
+        </header>
+        <form class="" action="/projects" method="post">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+          <p>
+            <label>Project Name:</label>
+            <input type="text" name="project[name]" value="">
+          </p>
+          <p>
+            <label>Project Description:</label>
+            <input type="text" name="project[description]" value="">
+          </p>
+          <input type="hidden" name="project[admin_id]" value="<%=@user%>">
+          <input type="hidden" name="project[active]" value="true">
+          <input type="submit" name="name" value="Create Project">
+        </form>
+        <div class="projects">
+          <h1>Your Projects:</h1>
+          <% if @project %>
+          <%@project.each do |p| %>
+            <h3><%=p.name%></h3>
+            <p><%=p.description%></p>
+            <form class="" action="/join" method="post">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="hidden" name="project[id]" value="<%=p.id%>">
+              <input type="submit" name="name" value="Join">
+            </form>
+            <%end%>
+            <%end%>
+        </div>
+      </div>
+
+  </body>
+</html>
