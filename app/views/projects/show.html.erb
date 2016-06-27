@@ -4,6 +4,12 @@
     <meta charset="utf-8">
     <title></title>
   </head>
+  <style media="screen">
+    .proj{
+      border: 1px solid black;
+    }
+
+  </style>
   <body>
       <div class="container">
         <header>
@@ -35,15 +41,55 @@
           <h1>Your Projects:</h1>
           <% if @project %>
           <%@project.each do |p| %>
+          <div class="proj">
             <h3><%=p.name%></h3>
             <p><%=p.description%></p>
-            <form class="" action="/join" method="post">
-              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-              <input type="hidden" name="project[id]" value="<%=p.id%>">
-              <input type="submit" name="name" value="Join">
-            </form>
+            <p>
+              Project Admin:
+              <%@admin = User.find_by_id(p.admin_id)%>
+              <strong>:<%=@admin.first_name%> <%=@admin.last_name%></strong>
+            </p>
+            <p>
+              Collaboraters:
+              <%@members = p.users%>
+              <%if @members%>
+              <%@members.each do |m|%>
+              <p><strong>:<%=m.first_name%> <%=m.last_name%></strong></p>
+              <%end%>
+              <%end%>
+            </p>
+          </div>
             <%end%>
             <%end%>
+        </div>
+        <div class="local_projects">
+          <%if @local_projects%>
+          <%@local_projects.each do |l|%>
+          <h3><%=l.name%></h3>
+          <p>
+            <%=l.description%>
+          </p>
+          <p>
+            Project Admin:
+            <%@local_admin = User.find_by_id(l.admin_id)%>
+            <strong>:<%=@local_admin.first_name%> <%=@local_admin.last_name%></strong>
+          </p>
+          <p>
+            Collaboraters:
+            <%@members = l.users%>
+            <%if @members%>
+            <%@members.each do |m|%>
+            <p><strong>:<%=m.first_name%> <%=m.last_name%></strong></p>
+            <%end%>
+            <%end%>
+          </p>
+          <form class="" action="/join" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="project[id]" value="<%=l.id%>">
+            <input type="submit" name="name" value="Join">
+          </form>
+          <%end%>
+          <%end%>
         </div>
       </div>
 

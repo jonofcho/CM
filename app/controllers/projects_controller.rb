@@ -5,6 +5,8 @@ class ProjectsController < ApplicationController
   def show
     @user = current_user
     @project = Project.where(:admin_id => @user.id)
+    @local_projects = Project.where.not(:admin_id => @user.id)
+
   end
 
   def create
@@ -25,10 +27,10 @@ class ProjectsController < ApplicationController
   end
 
   def join
-    group = projects_users.new(add_user_to_project)
-    group.user_id = current_user.id
-    group.save
-    redirect_to :back
+    @user = current_user
+    @project = Project.find(params[:project][:id])
+    current_user.projects << @project
+    redirect_to @project
   end
   private
   def add_user_to_project
