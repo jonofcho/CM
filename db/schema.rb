@@ -11,14 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160701030405) do
+ActiveRecord::Schema.define(version: 20160705194221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.string   "content"
+    t.integer  "author",     limit: 8
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
   create_table "project_users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "project_id"
   end
 
   create_table "projects", force: :cascade do |t|

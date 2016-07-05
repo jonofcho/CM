@@ -38,6 +38,11 @@
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
           <input type="submit" name="name" value="Get Started!">
         </form>
+        <div class="errors">
+          <%if flash[:errors]%>
+          <%=flash[:errors]%>
+          <%end%>
+        </div>
         <form class="loginform" action="/sessions/new" method="post">
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
           <input type="text" placeholder="E-mail" name="email" value="">
