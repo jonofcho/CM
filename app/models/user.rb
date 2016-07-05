@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :format => { :with => email_regex }, :uniqueness => { :case_sensitive => false }
 
   validates :password, :presence => true
-  has_many :skills
-  has_and_belongs_to_many :projects
+  has_many :skills, dependent: :destroy 
+  has_many :project_users, dependent: :destroy
+  has_many :projects, through: :project_users
 end

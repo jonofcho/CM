@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
       session[:user_id] = u.id
       redirect_to u
     else
-      flash[:errors] = u.errors.full_messages
+      flash[:errors] = "Incorrect Combination"
       redirect_to :back
     end
   end

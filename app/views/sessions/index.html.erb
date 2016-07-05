@@ -4,21 +4,61 @@
     <meta charset="utf-8">
     <title></title>
   </head>
+  <style media="screen">
+  *{
+    border: 1px solid black;
+  }
+    .container{
+      width: 1260px;
+
+    }
+    header{
+      height: 216px;
+    }
+    .logo{
+      height: 300px;
+
+    }
+    .maincontent{
+      margin-left: 32px;
+      margin-right: 32px;
+      width: 1184px;
+      height: 650px;
+    }
+    .loginform{
+      width: 348px;
+      margin-left: 880px;
+      margin-top: 150px;
+    }
+  </style>
   <body>
-    <form class="" action="/sessions/register" method="post">
-      <h5>Register</h5>
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="submit" name="name" value="Get Started!">
-    </form>
-    <br>
-    <br>
-    <br>
-    <form class="" action="/sessions/new" method="post">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <h5>Login:</h5>
-        <input type="text" placeholder="E-mail" name="email" value="">
-        <input type="password" placeholder="Password" name="password" value="">
-        <input type="submit" name="name" value="Login">
-      </form>
+    <div class="container">
+      <header>
+        <form class="" action="/register" method="post">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input type="submit" name="name" value="Get Started!">
+        </form>
+        <form class="loginform" action="/sessions/new" method="post">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input type="text" placeholder="E-mail" name="email" value="">
+          <input type="password" placeholder="Password" name="password" value="">
+          <input type="submit" name="name" value="Login">
+        </form>
+      </header>
+      <div class="logo">
+
+      </div>
+      <div class="maincontent">
+        <div class="ms1">
+          <h1><strong>About Us</strong></h1>
+          <p>
+            asdfasdfasdfqgqn noifnq oenfeqofn qioefnoqi enqiowen oiqwenroiqnefio qnerioqnreoi qnreioeqn riowenrioq neroiqenr oiqenrioeqn roiqneroiq gnoefnoerifnqoi fnwoiefneio enqoiwefn qioernqioewn qioenqio nqoien oiqwner
+          </p>
+        </div>
+        <div class="ms2">
+
+        </div>
+      </div>
+    </div>
   </body>
 </html>

@@ -24,6 +24,9 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    @project = Project.find(params[:project][:id])
+    @project.delete
+    redirect_to :back
   end
 
   def join
